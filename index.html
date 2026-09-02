@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mental Health Score Predictor</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="bg-shapes">
+  <div class="shape shape1"></div>
+  <div class="shape shape2"></div>
+  <div class="shape shape3"></div>
+</div>
+
+<div class="container">
+
+  <header class="app-header">
+    <div class="header-icon">🧠</div>
+    <h1>Mental Health Score Predictor</h1>
+    <p>Fill in your daily habits below to get an AI-powered mental health score prediction.</p>
+  </header>
+
+  <form id="predictForm" class="predict-form">
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" min="10" max="100" placeholder="e.g. 21" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Select gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" placeholder="e.g. India" required>
+      </div>
+
+      <div class="form-group">
+        <label for="academic_level">Academic Level</label>
+        <select id="academic_level" name="academic_level" required>
+          <option value="" disabled selected>Select level</option>
+          <option value="High School">High School</option>
+          <option value="Undergraduate">Undergraduate</option>
+          <option value="Graduate">Graduate</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="most_used_platform">Most Used Platform</label>
+        <select id="most_used_platform" name="most_used_platform" required>
+          <option value="" disabled selected>Select platform</option>
+          <option value="Facebook">Facebook</option>
+          <option value="LinkedIn">LinkedIn</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Snapchat">Snapchat</option>
+          <option value="Twitter">Twitter</option>
+          <option value="YouTube">YouTube</option>
+          <option value="TikTok">TikTok</option>
+          <option value="LINE">LINE</option>
+          <option value="KakaoTalk">KakaoTalk</option>
+          <option value="VKontakte">VKontakte</option>
+          <option value="WhatsApp">WhatsApp</option>
+          <option value="WeChat">WeChat</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="purpose_of_use">Purpose of Use</label>
+        <select id="purpose_of_use" name="purpose_of_use" required>
+          <option value="" disabled selected>Select purpose</option>
+          <option value="Networking">Networking</option>
+          <option value="Education">Education</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="News">News</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="avg_daily_usage_hours">Avg Daily Usage (hrs)</label>
+        <input type="number" id="avg_daily_usage_hours" name="avg_daily_usage_hours" min="0" max="24" step="0.1" placeholder="e.g. 4.5" required>
+      </div>
+
+      <div class="form-group">
+        <label for="daily_unlocks">Daily Phone Unlocks</label>
+        <input type="number" id="daily_unlocks" name="daily_unlocks" min="0" placeholder="e.g. 60" required>
+      </div>
+
+      <div class="form-group">
+        <label for="study_hours">Study Hours</label>
+        <input type="number" id="study_hours" name="study_hours" min="0" max="24" step="0.1" placeholder="e.g. 3" required>
+      </div>
+
+      <div class="form-group">
+        <label for="physical_activity_hours">Physical Activity (hrs)</label>
+        <input type="number" id="physical_activity_hours" name="physical_activity_hours" min="0" max="24" step="0.1" placeholder="e.g. 1" required>
+      </div>
+
+      <div class="form-group">
+        <label for="sleep_hours_per_night">Sleep Hours / Night</label>
+        <input type="number" id="sleep_hours_per_night" name="sleep_hours_per_night" min="0" max="24" step="0.1" placeholder="e.g. 7" required>
+      </div>
+
+      <div class="form-group">
+        <label for="stress_level">Stress Level</label>
+        <select id="stress_level" name="stress_level" required>
+          <option value="" disabled selected>Select stress level</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+          <option value="Very High">Very High</option>
+        </select>
+      </div>
+
+    </div>
+
+    <button type="submit" id="submitBtn" class="predict-btn">
+      <span class="btn-text">Predict My Score</span>
+    </button>
+
+    <p id="errorMsg" class="error-msg hidden"></p>
+
+  </form>
+
+  <!-- Loading overlay -->
+  <div id="loadingOverlay" class="loading-overlay hidden">
+    <div class="spinner"></div>
+    <p>Analyzing your data...</p>
+  </div>
+
+  <!-- Result card -->
+  <div id="resultCard" class="result-card hidden">
+    <button id="closeResult" class="close-btn">&times;</button>
+    <div class="result-icon" id="resultIcon">🌟</div>
+    <h2>Your Mental Health Score</h2>
+    <div class="score-circle">
+      <span id="scoreValue">0</span>
+    </div>
+    <p id="scoreLabel" class="score-label">—</p>
+    <p class="disclaimer">This is an AI-generated estimate, not a medical diagnosis.</p>
+    <button id="tryAgainBtn" class="predict-btn secondary-btn">Try Again</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
